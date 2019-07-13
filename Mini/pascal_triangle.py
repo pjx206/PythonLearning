@@ -3,7 +3,11 @@ def main():
     for l in triangle(n):
         print(l)
 
+
 def triangle(n):
+        """A generate that generate pascal's triangle
+        :param n: n lines will be generated
+        """
     i = 1
     l = [1]
     yield(l)
