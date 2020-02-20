@@ -4,7 +4,7 @@ from settings import Segments, Numbers
 #! Turtle uses a normal cordinate system: (0, 0) is left bottom
 #! points in segments is using a screen cordinate system: (0, 0) is left top
 
-class DigitClock:
+class DigitalClock:
     def __init__(self, initTime):
         """initTime format: hh:mm:ss"""
         tmp = initTime.split(':')
@@ -39,7 +39,12 @@ class DigitClock:
             # invalid number
             exit(1)
 
-        number = self._Number[number]
+        number = self._Numbers[number]
         for seg in range(len(number)):
             if number[seg] == 1:
                 self.__drawSeg(seg, leftTop)
+
+
+clock = DigitalClock('1:1:1')
+clock.DisplayDigit(0, (0, 0))
+clock.DisplayDigit(1, (100, 100))
