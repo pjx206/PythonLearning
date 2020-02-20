@@ -47,7 +47,7 @@ def main():
     encoded = encode_str(s, tab=table)
 
     print(encoded)
-    print(decode_str(encoded))
+    print(decode_str(encoded, tab=table))
 
 
 if __name__ == '__main__':
