@@ -1,3 +1,4 @@
 # PythonLearning
 this is the repo used for my daily python coding practice
-**CHECK THEM BEFORE USING**
+**MAY CONTAIN NUMEROUS BUGS!!**
+**CHECK THEM BEFORE USING**(if you really want to use)
