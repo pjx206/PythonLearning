@@ -53,7 +53,7 @@ def main():
     browser = webdriver.Chrome(executable_path=exepath, chrome_options=opt)
 
     # 开始的章节编号
-    beginchap = 60
+    beginchap = 120
     # 总共128章
     chapters = [[] for i in range(128 - beginchap)]
 
@@ -73,15 +73,11 @@ def main():
                 img_link = img_link[img_link.find('src="') + 5:]
                 chapters[i].append((img_link, page := page+1))
 
-                browser.get(img_link)
-                img_url = browser.current_url
-                browser.back()
-
-                rootpath = 'G:\\Downloads\\租借女友'
+                rootpath = r'G:\Downloads\zjny'
                 savepath = rootpath + \
                     '\\chap%d\\page%d.jpg' % (beginchap + i, page)
 
-                downloadImg(img_url, savepath)
+                downloadImg(img_link, savepath)
 
             # 根据xpath找到 下一页 按钮，并模拟点击，浏览器F12，右键单击html源码，找一找可以找到
             # 复制XPath的选项
@@ -91,6 +87,8 @@ def main():
             currentChap = browser.current_url
 
     browser.quit()
+    print("downloaing finished")
+    print(chapters)
 
 if __name__ == '__main__':
     main()
