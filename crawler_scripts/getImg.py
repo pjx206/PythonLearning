@@ -21,7 +21,7 @@ def getLink(src: str, pattern: str) -> list:
 def downloadImg(img_url, file_path):
     savepath = '\\'.join(file_path.split('\\')[:-1])
     if not os.path.exists(savepath):
-        os.mkdir(savepath)
+        os.makedirs(savepath)
 
     req = requests.get(url=img_url)
     with open(file_path, 'wb') as f:
@@ -37,7 +37,7 @@ def main():
     （以'.jpg'结尾）
     """
     # 从这一章开始
-    lastChapter = 'https://m.duoduomh.com/manhua/zujienvyou/847943.html'
+    lastChapter = 'https://m.duoduomh.com/manhua/zujienvyou/853617.html'
 
     #避免后面的get参数比如 *.html?p=1 的影响，p是页书，而本脚本根据章节来保存下载下来的图片
     cmpLen = lastChapter.find('.html')
@@ -48,14 +48,14 @@ def main():
     opt.add_argument('blink-settings=imagesEnabled=false')
     opt.add_argument('log-level=3')
 
-    # 我的chrome （其实是百分浏览器根目录也在这
+    # 我的chrome （其实是我的百分浏览器根目录在这）
     exepath = r'G:\Program Files\CentBrowser\Application\chromedriver.exe'
     browser = webdriver.Chrome(executable_path=exepath, chrome_options=opt)
 
     # 开始的章节编号
-    beginchap = 120
+    beginchap = 128
     # 总共128章
-    chapters = [[] for i in range(128 - beginchap)]
+    chapters = [[] for i in range(128 - beginchap + 1)]
 
     currentChap = lastChapter
     # for i in range(len(chapters)):
@@ -73,7 +73,7 @@ def main():
                 img_link = img_link[img_link.find('src="') + 5:]
                 chapters[i].append((img_link, page := page+1))
 
-                rootpath = r'G:\Downloads\zjny'
+                rootpath = r'G:\Downloads\租借女友'
                 savepath = rootpath + \
                     '\\chap%d\\page%d.jpg' % (beginchap + i, page)
 
