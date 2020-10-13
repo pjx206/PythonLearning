@@ -25,7 +25,7 @@ def login(driver: webdriver):
         return
 
     try:
-        WebDriverWait(driver, 10).until(
+        WebDriverWait(driver, 30).until(
             EC.presence_of_element_located(
                 (By.CLASS_NAME, 'TxtUserNameCssClass'))
         )
@@ -68,7 +68,15 @@ if __name__ == '__main__':
 
     # logout(driver)
     login(driver)
-    print('[*] successfully logged in')
+
+    try:
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located(
+                (By.XPATH, '/html/body/div[2]/table/tbody[2]/tr[2]/td[2]/a'))
+        )
+        print('[*] loading finished')
+    except Exception:
+        print('[!] cannot open page')
 
     # test if this can correctly open the latest one
     latest = driver.find_element_by_xpath(
